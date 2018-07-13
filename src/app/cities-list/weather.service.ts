@@ -22,14 +22,14 @@ export class WeatherService{
     }
     getCityWeatherById(id): Observable<IWeather[]> {
         return this._http.get<IWeather[]>(this._weatherUrl + 'weather?id='+ id + '&appid=' + this._Key).pipe(
-                tap(data =>console.log ('All: '+JSON.stringify(data))),
+                // tap(data =>console.log ('All: '+JSON.stringify(data))),
                 catchError(this.handleError)
         );
     }
     getWeatherForecastById (id): Observable<IWeather[]> {
         return this._http.get<IWeather[]>(this._weatherUrl + 'forecast?id='+ id + '&appid=' + this._Key).pipe(
                 map(data=>data.list),                
-                tap(data =>console.log ('All: '+JSON.stringify(data))),
+               // tap(data =>console.log ('All: '+JSON.stringify(data))),
                 catchError(this.handleError)
         );
     }

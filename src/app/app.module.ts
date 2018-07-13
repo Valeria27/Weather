@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxChartsModule } from '@swimlane/ngx-charts/release';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -12,8 +12,8 @@ import { ConvertToTemperaturePipe } from 'src/app/shared/convert-to-temperature.
 import { WeatherService } from 'src/app/cities-list/weather.service';
 import { CityWeatherComponent } from './city-weather/city-weather.component';
 import { CityIdGuardService } from './city-weather/city-id-guard.service';
-import { ComboChartComponent } from './chart/combo-chart.component.ts';
-import { ComboSeriesVerticalComponent } from './chart/combo-series-vertical.component';
+import { CustomChart } from './custom-chart/custom-chart.component';
+
 
 
 
@@ -23,8 +23,8 @@ import { ComboSeriesVerticalComponent } from './chart/combo-series-vertical.comp
     CitiesListComponent,
     ConvertToTemperaturePipe,
     CityWeatherComponent,
-    ComboChartComponent,
-    ComboSeriesVerticalComponent
+    CustomChart
+    
   ],
   imports: [
     BrowserAnimationsModule,
