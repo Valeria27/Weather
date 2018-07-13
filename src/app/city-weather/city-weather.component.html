@@ -1,0 +1,66 @@
+<div class= 'card' >
+  <div class= 'card-header'>
+      <img *ngFor= 'let weather of city.weather' src="http://openweathermap.org/img/w/{{ weather.icon}}.png"> {{PageTitle + city.name}}
+  </div>
+  <div class= 'card-body'>
+    <div class='table-responsive'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Date</th>
+                    <th>Temperature</th>
+                    <th>Weather Status</th>                      
+                    <th>Weather details</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let forecast of forecast'>
+                    <td *ngFor='let weather of city.weather'><img src="http://openweathermap.org/img/w/{{ weather.icon}}.png"></td>
+                    <td>{{ forecast.dt_txt }}</td>
+                    <td>{{ forecast.main.temp | temperature:'C' }}</td>
+                    <td *ngFor='let weather of city.weather' >{{weather.main }}</td>
+                    <td *ngFor='let weather of city.weather' >{{weather.description }}</td>                 
+                    <td><a class= 'btn btn-light' [routerLink]= "['/city', city.id]" >View details</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <div class= 'card-footer'>
+      <a class= 'btn btn-primary' (click) ='onBack()'>
+        <i class= 'fas fa-angle-left'></i> Back
+      </a>
+  </div>
+  <div > I am here
+  <combo-chart-component
+  
+   class="chart-container"
+  [view]="15"
+  [scheme]="comboBarScheme"
+  [colorSchemeLine]="lineChartScheme"
+  [results]="forecast.weather"
+  [animations]="animations"
+  [lineChart]="lineChartSeries"
+  [tooltipDisabled]="tooltipDisabled"
+  [yAxisTickFormatting]="yLeftTickFormat"
+  [yLeftAxisScaleFactor]="yLeftAxisScale"
+  [yRightAxisScaleFactor]="yRightAxisScale"
+  [yRightAxisTickFormatting]="yRightTickFormat"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [legendTitle]="legendTitle"
+  [showGridLines]="showGridLines"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [showRightYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [yAxisLabelRight]="yAxisLabelRight"
+  (select)="onSelect($event)">
+</combo-chart-component>
+</div>
+</div>
